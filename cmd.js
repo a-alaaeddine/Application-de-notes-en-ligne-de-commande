@@ -63,7 +63,7 @@ yargs.command({
             message: argv.message
         }]
 
-        const removeNoteJSON = JSON.stringify(newNote);
+        const removeNoteJSON = JSON.stringify(removeNote);
         fs.writeFile("data.json", removeNoteJSON, (err) => {
             if (err) console.log(err);
             else {
