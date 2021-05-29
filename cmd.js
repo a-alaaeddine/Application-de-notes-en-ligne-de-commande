@@ -1,5 +1,6 @@
 const yargs = require('yargs');
 const fs = require("fs");
+const deleteProperty = require("delete-property");
 
 yargs.command({
     command: 'list',
@@ -40,7 +41,24 @@ yargs.command({
         }
     },
     handler: (argv) => {
-        const newNote = [{
+        const removeNote = [{
+            title: argv.title,
+            message: argv.message
+        }]
+
+        const removeNoteJSON = JSON.stringify(newNote);
+        fs.writeFile("data.json", removeNoteJSON, (err) => {
+            if (err) console.log(err);
+            else {
+                console.log("La nouvelle note a été supprimée");
+            }
+        });
+    }
+}).command({
+    command: 'remove',
+    describe: "Supprime une note",
+    handler: (argv) => {
+        const removeNote = [{
             title: argv.title,
             message: argv.message
         }]
@@ -52,16 +70,6 @@ yargs.command({
                 console.log("La nouvelle note a été sauvegardée");
             }
         });
-    }
-}).command({
-    command: 'remove',
-    describe: "Supprime une note",
-    handler: (argv) => {
-        const newNote = [{
-            title: argv.title,
-            message: argv.message
-        }]
-        console.log("Chaud pour supprimer une note");
     }
 }).command({
     command: 'read',
