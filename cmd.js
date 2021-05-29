@@ -41,16 +41,16 @@ yargs.command({
         }
     },
     handler: (argv) => {
-        const removeNote = [{
+        const newNote = [{
             title: argv.title,
             message: argv.message
         }]
 
-        const removeNoteJSON = JSON.stringify(newNote);
-        fs.writeFile("data.json", removeNoteJSON, (err) => {
+        const newNoteJSON = JSON.stringify(newNote);
+        fs.writeFile("data.json", newNoteJSON, (err) => {
             if (err) console.log(err);
             else {
-                console.log("La nouvelle note a été supprimée");
+                console.log("La nouvelle note a été sauvegardée");
             }
         });
     }
@@ -63,11 +63,11 @@ yargs.command({
             message: argv.message
         }]
 
-        const newNoteJSON = JSON.stringify(newNote);
-        fs.writeFile("data.json", newNoteJSON, (err) => {
+        const removeNoteJSON = JSON.stringify(newNote);
+        fs.writeFile("data.json", removeNoteJSON, (err) => {
             if (err) console.log(err);
             else {
-                console.log("La nouvelle note a été sauvegardée");
+                console.log("La nouvelle note a été supprimée");
             }
         });
     }
