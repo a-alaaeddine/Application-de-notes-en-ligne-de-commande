@@ -74,6 +74,10 @@ yargs.command({
     command: 'read',
     describe: "Affiche le détail d'une note",
     handler: () => {
-        console.log("Voici le détail d'une note");
+        fs.readFile('data.json', (err, data) => {
+            if (err) throw err;
+            let detail = JSON.parse(data);
+            console.log(detail);
+        });
     }
 }).argv;
