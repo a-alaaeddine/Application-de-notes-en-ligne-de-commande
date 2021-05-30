@@ -1,6 +1,5 @@
 const yargs = require('yargs');
 const fs = require("fs");
-const deleteProperty = require("delete-property");
 
 yargs.command({
     command: 'list',
